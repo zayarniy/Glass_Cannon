@@ -31,16 +31,20 @@ public class GameManager : MonoBehaviour {
 
 	public static void SetAdrenalin(bool b,int adrenalinCount)
 	{
-		if (b==true)
+		if (b == true)
 		{
-			myslf.adrenalinText.text=adrenalinCount.ToString();
-            myslf.adrenalin.transform.localScale = Vector3.one * 2.5f;
+			myslf.adrenalinText.text = adrenalinCount.ToString();
+			myslf.adrenalin.transform.localScale = Vector3.one * 2.5f;
 			myslf.adrenalinText.color = Color.red;
-            iTween.Stop(myslf.adrenalin);
+			//myslf.adrenalin.SetActive(true);
+			iTween.Stop(myslf.adrenalin);
 			iTween.ScaleTo(myslf.adrenalin.gameObject, iTween.Hash("scale", Vector3.one, "time", 0.5f, "delay", 0.1f, "easetype", iTween.EaseType.spring));
 		}
 		else
-            myslf.adrenalinText.color = Color.black;
+		{
+			myslf.adrenalinText.color = Color.black;
+            //myslf.adrenalin.SetActive(false);
+        }
 
     }
 	public static void AddScore(int pointsAdded){
