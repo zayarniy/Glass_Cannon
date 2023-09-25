@@ -65,14 +65,21 @@ public class PlayerBehavior : MonoBehaviour {
 		UpdateAim ();
 	}
 
+	public int lungeImpulse = 2000;
 	
+	void Lunge()
+	{
+		//myRigidBody.velocity = new Vector3(0,0,0);
+		myRigidBody.AddForce(myRigidBody.velocity* lungeImpulse);
+	}
 
 	void SetAdrenalin()
 	{
 
 		if (adrenalinCount>0 && !isAdrenalin)
 		{
-			moveSpeed = initSpeed * 3;
+            Lunge();
+            moveSpeed = initSpeed * 3;
 			isAdrenalin = true;
 			adrenalinCount--;
 			GameManager.SetAdrenalin(true,adrenalinCount);
